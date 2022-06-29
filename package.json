@@ -1,0 +1,69 @@
+{
+    "name": "javalint",
+    "displayName": "javalint",
+    "description": "code style check tool extension for javalint",
+    "version": "1.0.0",
+    "publisher": "craftslab",
+    "repository": {
+        "type": "Git",
+        "url": "https://github.com/devops-lintflow/javalint-vscode"
+    },
+    "engines": {
+        "vscode": "^1.21.0"
+    },
+    "categories": [
+        "Linters"
+    ],
+    "keywords": [
+        "multi-root ready"
+    ],
+    "activationEvents": [
+        "onLanguage:java",
+        "onCommand:javalint.runAnalysis"
+    ],
+    "main": "./out/src/extension",
+    "contributes": {
+        "commands": [
+            {
+                "command": "javalint.runAnalysis",
+                "title": "Analyze current file",
+                "category": "javalinter"
+            }
+        ],
+        "configuration": {
+            "type": "object",
+            "title": "javalint",
+            "properties": {
+                "javalint.javalintPath": {
+                    "type": "string",
+                    "default": "/usr/local/lib/javalint",
+                    "description": "The path to the javalint library. If not set, the default location will be used."
+                },
+                "javalint.languages": {
+                    "type": "array",
+                    "default": [
+                        "java"
+                    ],
+                    "description": "The allowed vscode language identifiers that javalint will check."
+                }
+            }
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "tsc -p ./",
+        "compile": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "@types/mocha": "^2.2.32",
+        "@types/node": "^6.0.40",
+        "mocha": "^2.3.3",
+        "typescript": "^3.9.7",
+        "vscode": "^1.0.0"
+    },
+    "dependencies": {
+        "lodash": "^4.17.4",
+        "vsce": "^2.9.1"
+    }
+}
