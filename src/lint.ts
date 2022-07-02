@@ -9,8 +9,8 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { runOnFile } from './runner';
 
-let outputChannel: vscode.OutputChannel;
-outputChannel = vscode.window.createOutputChannel('JavaLint');
+// let outputChannel: vscode.OutputChannel;
+// outputChannel = vscode.window.createOutputChannel('JavaLint');
 
 function getCorrectFileName(p: string): string {
     if (!fs.existsSync(p)) {
@@ -35,13 +35,10 @@ function javalintSeverityToDiagnosticSeverity(severity: string): vscode.Diagnost
 }
 
 export function analysisResult(diagnosticCollection: vscode.DiagnosticCollection, result: string) {
-    outputChannel.show();
-    outputChannel.clear();
-
     diagnosticCollection.clear();
 
     // 1 = path, 2 = line, 3 = severity, 4 = message
-    let regex = /^(.*):([0-9]+):(\w+):(.*\s+.*)/gm;
+    let regex = /^(.*):([0-9]+):(\w+):(.*\s+.*)\n/gm;
     let regexArray: RegExpExecArray;
     let fileData: { [key: string]: RegExpExecArray[] } = {};
 
