@@ -64,7 +64,7 @@ export function analysisResult(diagnosticCollection: vscode.DiagnosticCollection
                 let array = fileData[fileName][index];
                 let line = Number(array[2]);
                 let severity = array[3];
-                let message = array[4];
+                let message = array[4].trim();
 
                 if (line > 0) {
                     line--;
