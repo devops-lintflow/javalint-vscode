@@ -2,6 +2,7 @@
     "name": "javalint",
     "displayName": "javalint",
     "description": "code style check tool extension for javalint",
+    "icon": "logo-2.png",
     "version": "1.0.0",
     "publisher": "craftslab",
     "repository": {
