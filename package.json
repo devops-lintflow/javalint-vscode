@@ -3,7 +3,7 @@
     "displayName": "javalint",
     "description": "code style check tool extension for javalint",
     "icon": "logo-2.png",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "publisher": "craftslab",
     "repository": {
         "type": "Git",
@@ -37,7 +37,7 @@
             "properties": {
                 "javalint.javalintPath": {
                     "type": "string",
-                    "default": "/usr/local/lib/javalint",
+                    "default": "/usr/local/lib/javalint.jar",
                     "description": "The path to the javalint library. If not set, the default location will be used."
                 },
                 "javalint.languages": {
