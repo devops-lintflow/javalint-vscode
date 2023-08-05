@@ -4,7 +4,7 @@ import {ConfigManager} from "./configuration";
 
 export function runOnFile() {
     if (vscode.window.activeTextEditor == undefined) {
-        return  ""
+        return [];
     }
 
     let activedoc = vscode.window.activeTextEditor.document;
@@ -13,7 +13,7 @@ export function runOnFile() {
     if (ConfigManager.getInstance().isSupportLanguage(activedoc.languageId)) {
         return runJavaLint(filename);
     } else {
-        return "";
+        return [];
     }
 }
 
@@ -25,12 +25,20 @@ export function runJavaLint(filename: string) {
     param.push("--file");
     param.push(filename);
 
-    let output = lint("java", param);
-
-    return output.join('\n');
+    return lint("java", param);
 }
 
 function lint(exec: string, params: string[]) {
-    let result = spawnSync(exec, params);
-    return [result.stdout, result.stderr];
+    let buf = [];
+    let result = spawnSync(exec, params, {encoding: 'utf-8'});
+
+    if (result.stdout && result.stdout.length > 0) {
+        buf = String(result.stdout).split('\n');
+    }
+
+    if (result.stderr && result.stderr.length > 0) {
+        buf.concat(String(result.stderr).split('\n'));
+    }
+
+    return buf;
 }

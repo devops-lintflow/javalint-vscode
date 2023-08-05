@@ -44,7 +44,7 @@ function runAnalysis(): Promise<void> {
     outputChannel.appendLine(start);
 
     let result = an.runOnFile();
-    outputChannel.appendLine(result);
+    outputChannel.appendLine(result.join('\n'));
 
     let end = 'JavaLint ended: ' + new Date().toString();
     outputChannel.appendLine(end);
