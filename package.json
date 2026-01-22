@@ -64,7 +64,7 @@
         "vscode": "^1.0.0"
     },
     "dependencies": {
-        "lodash": "^4.17.4",
+        "lodash": "^4.17.23",
         "vsce": "^2.9.1"
     }
 }
